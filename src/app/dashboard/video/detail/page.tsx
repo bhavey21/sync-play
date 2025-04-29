@@ -44,7 +44,7 @@ export default function VideoPage() {
     setCreatingSession(true);
     try {
       const res = await axios.post(
-        '/api/session/create',
+        '/api/session',
         { id: id }
       );
       setSession(res.data.session);
