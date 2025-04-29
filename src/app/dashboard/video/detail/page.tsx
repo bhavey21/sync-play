@@ -26,11 +26,9 @@ export default function VideoPage() {
         const res = await axios.get<{ video: VideoData, session: any }>(
           `/api/video/detail/${encodeURIComponent(id)}`
         );
-        console.log(res.data);
         setVideoData(res.data.video);
         setSession(res.data.session)
       } catch (error) {
-        console.error('Failed to fetch video data', error);
       }
     };
     fetchVideo();
