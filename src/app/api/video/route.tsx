@@ -4,10 +4,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import dbConnect from '@/app/lib/dbConnect';
 import { getCurrentUser } from '@/app/lib/auth';
-import Video from '../../models/Video';
+import Video from '../models/Video';
 
 export async function Delete(req: NextRequest) {
-  console.log('heyhey')
   await dbConnect();
 
   let user = getCurrentUser(req);
