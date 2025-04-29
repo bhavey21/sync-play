@@ -25,7 +25,6 @@ export async function GET(req: Request) {
         const signedUrl = await generateSignedUrl(session.video.key);
         return NextResponse.json({ session, signedUrl }, { status: 201 });
     } catch (err) {
-        console.log(err);
         return NextResponse.json({ error: 'Server error' }, { status: 500 });
     }
 }
@@ -50,10 +49,9 @@ export async function POST(req: Request) {
         const { id } = body;
 
         const video = await Video.findById(id);
-        console.log(id);
-        console.log(video);
+ 
         const session = await Session.findOne({ video: id });
-        console.log(session);
+
         if (!video || session) {
             return NextResponse.json({ error: 'An error occured' }, { status: 400 });
         }
@@ -63,7 +61,6 @@ export async function POST(req: Request) {
 
         return NextResponse.json({ session: newSession }, { status: 201 });
     } catch (err) {
-        console.log(err);
         return NextResponse.json({ error: 'Server error' }, { status: 500 });
     }
 }

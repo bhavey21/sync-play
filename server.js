@@ -16,7 +16,6 @@ app.prepare().then(() => {
   global._io = io;
   io.on("connection", (socket) => {
     socket.on("join-room", (roomName) => {
-      console.log(`Socket ${socket.id} joining room: ${roomName}`);
       socket.join(roomName);
     });
   });
@@ -27,6 +26,5 @@ app.prepare().then(() => {
       process.exit(1);
     })
     .listen(port, () => {
-      console.log(`> Ready on http://${hostname}:${port}`);
     });
 });

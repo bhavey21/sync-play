@@ -45,7 +45,6 @@ export default function LoginForm() {
       return;
     }
     try {
-      console.log(form);
       const data:any = await axios.post('/api/login', form);
       router.push('/dashboard/video/list')
     }catch(err:any){

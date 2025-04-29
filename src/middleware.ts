@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server';
 const PUBLIC_PATHS = ['/login', '/register'];
 
 export async function middleware(request: NextRequest) {
-  console.log('mmmmnnjj');
+
   const { pathname } = request.nextUrl;
 
   // Allow public routes
@@ -12,17 +12,13 @@ export async function middleware(request: NextRequest) {
 
   // Check for JWT token in cookies
   const token = request.cookies.get('token')?.value;
-  console.log(token);
   if (!token) {
-    console.log('token not found');
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
   try {
-   console.log('token found');
     return NextResponse.next(); // Authenticated, allow access
   } catch (err) {
-    console.error("Invalid token:", err);
     return NextResponse.redirect(new URL('/login', request.url));
   }
 }
