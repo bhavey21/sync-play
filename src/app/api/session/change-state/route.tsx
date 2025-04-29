@@ -1,10 +1,7 @@
-// app/api/register/route.ts
 import { NextResponse } from 'next/server';
 import dbConnect from '@/app/lib/dbConnect';
 import bcrypt from 'bcryptjs';
 import Session from '../../models/Session';
-import Video from '../../models/Video';
-//import { io } from '../../../../../server';
 export async function POST(req: Request) {
   try {
     await dbConnect();
