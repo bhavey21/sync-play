@@ -1,11 +1,7 @@
 import WatchPartyClient from "./WatchPartyClient";
 
-type WatchPartyProps = {
-  params: {
-    id: string;
-  };
-};
 
-export default function WatchParty({ params }: WatchPartyProps) {
-  return <WatchPartyClient id={params.id} />;
+export default async function Page({ params }:any) {
+  const { id } = await params
+  return <WatchPartyClient id={id} />;
 }
