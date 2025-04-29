@@ -17,7 +17,6 @@ const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials:any) {
-        console.log('neeeeext auth');
         //await dbConnect();
 
         if (!credentials?.email || !credentials?.password) {
