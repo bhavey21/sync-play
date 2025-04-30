@@ -86,7 +86,7 @@ export default function WatchPartyClient({ id }: WatchPartyClientProps) {
           />
 
           {/* Watermark */}
-          <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+          <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center pointer-events-none">
             <span className="text-red-700 text-4xl font-bold opacity-30">Copyrighted</span>
           </div>
 
