@@ -1,5 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This Project was made as Demo for Sync-Play
 
+Currently for Demonstraton it is hosted at https://www.bhavey.site
 ## Getting Started
 
 First, run the development server:

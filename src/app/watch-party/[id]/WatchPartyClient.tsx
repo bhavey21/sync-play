@@ -13,6 +13,7 @@ export default function WatchPartyClient({ id }: WatchPartyClientProps) {
   const [videoData, setVideoData] = useState<any>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [transport, setTransport] = useState("N/A");
+
   useEffect(() => {
     fetchWatchPartyVideo();
   }, [id]);
@@ -27,7 +28,7 @@ export default function WatchPartyClient({ id }: WatchPartyClientProps) {
       setTransport(socket.io.engine.transport.name);
 
       socket.emit("join-room", id); // joining room using session id
-    
+
       socket.on("change-state", (data: any) => {
         if (videoRef.current) {
           if (data.play) {
@@ -37,7 +38,7 @@ export default function WatchPartyClient({ id }: WatchPartyClientProps) {
           }
         }
       });
-    
+
       socket.io.engine.on("upgrade", (transport: any) => {
         setTransport(transport.name);
       });
@@ -73,7 +74,8 @@ export default function WatchPartyClient({ id }: WatchPartyClientProps) {
       <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">🎥 Watch Party</h1>
 
       {videoData?.signedUrl ? (
-        <div className="w-full max-w-md shadow-2xl rounded-2xl overflow-hidden">
+        <div className="relative w-full max-w-md shadow-2xl rounded-2xl overflow-hidden">
+          {/* Video Player */}
           <video
             ref={videoRef}
             src={videoData.signedUrl}
@@ -82,6 +84,12 @@ export default function WatchPartyClient({ id }: WatchPartyClientProps) {
             controlsList="nodownload"
             controls
           />
+
+          {/* Watermark */}
+          <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+            <span className="text-red-700 text-4xl font-bold opacity-30">Copyrighted</span>
+          </div>
+
           <div className="p-4 bg-gray-800">
             <h2 className="text-xl font-semibold">{videoData.title}</h2>
           </div>

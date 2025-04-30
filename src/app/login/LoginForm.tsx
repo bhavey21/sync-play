@@ -1,8 +1,8 @@
 "use client";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
 // Utility: Email validator
 const isValidEmail = (email: string) =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -108,6 +108,12 @@ export default function LoginForm() {
         >
           Sign In
         </button>
+        <div className="text-center mt-4">
+          <span className="text-sm text-gray-600">Don&apos;t have an account? </span>
+          <Link href="/register" className="text-blue-600 hover:underline font-medium">
+            Register now
+          </Link>
+        </div>
       </form>
     </div>
   );

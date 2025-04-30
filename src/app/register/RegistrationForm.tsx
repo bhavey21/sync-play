@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Link from "next/link";
 type FormState = {
   name: string;
   email: string;
@@ -216,6 +217,12 @@ export default function RegistrationForm() {
         >
           Register
         </button>
+        <div className="text-center mt-4">
+          <span className="text-sm text-gray-600">Already have an account? </span>
+          <Link href="/login" className="text-blue-600 hover:underline font-medium">
+            Sign in
+          </Link>
+        </div>
       </form>
     </div>
   );

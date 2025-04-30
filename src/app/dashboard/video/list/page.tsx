@@ -70,8 +70,9 @@ export default function ListVideo() {
                     View
                   </button>
                   <button
+                    disabled={true}
                     onClick={() => handleDelete(video._id)}
-                    className="px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer"
+                    className="px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600 cursor-not-allowed"
                   >
                     Delete
                   </button>

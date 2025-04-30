@@ -88,7 +88,7 @@ export default function VideoPageContent() {
 
       {session ?
         <>
-          <div className="flex gap-4 mb-6">
+          <div className="flex flex-wrap gap-4 mb-6">
             <button
               onClick={deleteSession}
               disabled={creatingSession}
@@ -96,7 +96,8 @@ export default function VideoPageContent() {
             >
               Delete Watch Party
             </button>
-            {session?.play ?
+
+            {session?.play ? (
               <button
                 onClick={() => changeSessionState(false)}
                 disabled={creatingSession}
@@ -104,23 +105,38 @@ export default function VideoPageContent() {
               >
                 Pause
               </button>
-              :
+            ) : (
               <button
                 onClick={() => changeSessionState(true)}
                 className="bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white font-semibold py-2 px-4 rounded cursor-pointer"
               >
                 Play
               </button>
-            }
+            )}
+
+            {/* Copy Link Button */}
+            <button
+              onClick={() => {
+                const link = `${window.location.origin}/watch-party/${session._id}`;
+                navigator.clipboard.writeText(link);
+              }}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded cursor-pointer"
+            >
+              Copy Watch Party Link
+            </button>
           </div>
         </>
-        : <button
-          onClick={createSession}
-          disabled={creatingSession}
-          className="mb-6 bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white font-semibold py-2 px-4 rounded cursor-pointer"
-        >
-          {creatingSession ? 'Creating Session…' : 'Create Watch Party'}
-        </button>}
+        : (
+          <button
+            onClick={createSession}
+            disabled={creatingSession}
+            className="mb-6 bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white font-semibold py-2 px-4 rounded cursor-pointer"
+          >
+            {creatingSession ? 'Creating Session…' : 'Create Watch Party'}
+          </button>
+        )
+      }
+
 
       <div className="w-full max-w-md shadow-2xl rounded-2xl overflow-hidden">
         <video
