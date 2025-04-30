@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       { new: true }
     );
     
-
+    // @ts-ignore
     const io = global._io;
     if (io) {
       io.to(session._id.toString()).emit("change-state", { play });

@@ -3,10 +3,14 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import User from "../../api/models/User";
-import dbConnect from "../../lib/dbConnect";
 import bcrypt from "bcryptjs";
 import type { JWT } from "next-auth/jwt";
 import type { Session, User as AuthUser } from "next-auth";
+
+interface Credentials {
+  email: string;
+  password: string;
+}
 
 const authOptions: NextAuthOptions = {
   providers: [

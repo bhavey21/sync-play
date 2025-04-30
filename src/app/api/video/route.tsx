@@ -6,7 +6,7 @@ import dbConnect from '@/app/lib/dbConnect';
 import { getCurrentUser } from '@/app/lib/auth';
 import Video from '../models/Video';
 
-export async function Delete(req: NextRequest) {
+export async function DELETE(req: NextRequest) {
   await dbConnect();
 
   let user = getCurrentUser(req);
