@@ -4,7 +4,6 @@ import type { NextRequest } from 'next/server';
 const PUBLIC_PATHS = ['/login', '/register'];
 
 export async function middleware(request: NextRequest) {
-  console.log('aaaabbbb');
   const { pathname } = request.nextUrl;
 
   // Allow public routes
