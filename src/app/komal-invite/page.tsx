@@ -7,15 +7,6 @@ export default function KomalInvite() {
           मैं आपको आमंत्रित करता हूँ एक <span className="font-semibold">बैडमिंटन मैच</span>,
           <span className="font-semibold"> स्केटिंग </span> और <span className="font-semibold">घूमने</span> के लिए।
         </p>
-
-        <div className="flex justify-center space-x-4">
-          <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg">
-            I Accept
-          </button>
-          <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg">
-            I Reject
-          </button>
-        </div>
       </div>
     </div>
   );
