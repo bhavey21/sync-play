@@ -9,7 +9,7 @@ export default function ListVideo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('/api/video/list');
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/video/list`);
         setVideos(res.data.videos);
       } catch (err) {
         console.error('Failed to fetch videos', err);
@@ -21,7 +21,7 @@ export default function ListVideo() {
 
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`/api/video/${id}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/video/${id}`);
       setVideos(videos.filter((video: any) => video._id !== id));
     } catch (err) {
       console.error('Failed to delete video', err);
@@ -29,7 +29,7 @@ export default function ListVideo() {
   };
 
   const handleView = (key: string) => {
-    const url = `/dashboard/video/detail?id=${key}`; // Update this if your stream URL differs
+    const url = `${process.env.NEXT_PUBLIC_BASE_PATH}/dashboard/video/detail?id=${key}`; // Update this if your stream URL differs
     window.open(url, '_blank');
   };
 

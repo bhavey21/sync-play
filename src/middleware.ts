@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value;
   if (PUBLIC_PATHS.includes(pathname)){
     if(token) {
-      return NextResponse.redirect(new URL('/dashboard/video/list', request.url));
+      return NextResponse.redirect(new URL(`${process.env.NEXT_PUBLIC_BASE_PATH}/dashboard/video/list`, request.url));
     }
     return NextResponse.next()
   }
@@ -18,13 +18,13 @@ export async function middleware(request: NextRequest) {
   // Check for JWT token in cookies
   
   if (!token) {
-    return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(new URL(`${process.env.NEXT_PUBLIC_BASE_PATH}/login`, request.url));
   }
 
   try {
     return NextResponse.next(); // Authenticated, allow access
   } catch (err) {
-    return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(new URL(`${process.env.NEXT_PUBLIC_BASE_PATH}/login`, request.url));
   }
 }
 

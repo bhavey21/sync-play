@@ -74,7 +74,7 @@ export default function RegistrationForm() {
     }
   
     try {
-      const data = await axios.post('/api/register', form);
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/register`, form);
   
         alert('User registered!');
         router.push("/login");

@@ -45,7 +45,7 @@ export default function LoginForm() {
       return;
     }
     try {
-      const data:any = await axios.post('/api/login', form);
+      const data:any = await axios.post(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/login`, form);
       router.push('/dashboard/video/list')
     }catch(err:any){
       alert('invalid user');

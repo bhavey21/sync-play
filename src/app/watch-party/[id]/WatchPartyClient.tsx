@@ -63,7 +63,7 @@ export default function WatchPartyClient({ id }: WatchPartyClientProps) {
   };
 
   const fetchWatchPartyVideo = async () => {
-    const res = await axios.get("/api/session", {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/session`, {
       params: { id }
     });
     setVideoData(res.data);

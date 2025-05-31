@@ -12,10 +12,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     const handleLogout = async () => {
         setLoggingOut(true);
         try {
-            // Send the logout request to the API
-            await axios.get('/api/logout');
-            // After the response, redirect to the login page
-            router.push('/login');
+            await axios.get(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/logout`);
+            router.push(`/login`);
         } catch (error) {
             console.error('Error logging out:', error);
             setLoggingOut(false);

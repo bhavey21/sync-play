@@ -24,7 +24,7 @@ export default function VideoPageContent() {
     const fetchVideo = async () => {
       try {
         const res = await axios.get<{ video: VideoData, session: any }>(
-          `/api/video/detail/${encodeURIComponent(id)}`
+          `${process.env.NEXT_PUBLIC_BASE_PATH}/api/video/detail/${encodeURIComponent(id)}`
         );
         setVideoData(res.data.video);
         setSession(res.data.session)
@@ -42,7 +42,7 @@ export default function VideoPageContent() {
     setCreatingSession(true);
     try {
       const res = await axios.post(
-        '/api/session',
+        `${process.env.NEXT_PUBLIC_BASE_PATH}/api/session`,
         { id: id }
       );
       setSession(res.data.session);
@@ -71,7 +71,7 @@ export default function VideoPageContent() {
 
   const changeSessionState = async (state: boolean) => {
     const res = await axios.post(
-      '/api/session/change-state',
+      `${process.env.NEXT_PUBLIC_BASE_PATH}/api/session/change-state`,
       { id: id, play: state }
     );
 
@@ -117,7 +117,7 @@ export default function VideoPageContent() {
             {/* Copy Link Button */}
             <button
               onClick={() => {
-                const link = `${window.location.origin}/watch-party/${session._id}`;
+                const link = `${window.location.origin}/${process.env.NEXT_PUBLIC_BASE_PATH}/watch-party/${session._id}`;
                 navigator.clipboard.writeText(link);
               }}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded cursor-pointer"

@@ -20,7 +20,7 @@ export default function AddVideo() {
 
         try {
             // Step 1: Get presigned URL from your API
-            const { data } = await axios.post('/api/video/s3upload/upload', {
+            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/video/s3upload/upload`, {
                 fileName: videoFile.name,
                 fileType: videoFile.type,
             });
@@ -34,7 +34,7 @@ export default function AddVideo() {
                 },
             });
 
-            await axios.post('/api/video/s3upload/success', {
+            await axios.post(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/video/s3upload/success`, {
                 name: name,
                 key: data.key,
             });
